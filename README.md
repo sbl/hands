@@ -1,7 +1,7 @@
 # hands
 
 [![Build
-Status](https://travis-ci.org/sbl/hands.svg?branch=travis)](https://travis-ci.org/sbl/hands)
+Status](https://travis-ci.org/sbl/hands.svg)](https://travis-ci.org/sbl/hands)
 
 helpful `net/http` conformant handlers. inspired by rack pendants.
 
