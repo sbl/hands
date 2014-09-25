@@ -9,7 +9,7 @@ const authenticateHeader = "WWW-Authenticate"
 
 // BasicAuth provides http basic authentication for a given username, password
 // combination.
-func BasicAuth(username, password, realm string, next http.Handler) http.Handler {
+func BasicAuth(next http.Handler, username, password, realm string) http.Handler {
 	secret := base64.StdEncoding.EncodeToString([]byte(username + ":" + password))
 	fn := func(w http.ResponseWriter, r *http.Request) {
 		if validAuth(secret, r.Header.Get("Authorization")) {
