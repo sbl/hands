@@ -10,8 +10,8 @@ import (
 func TestSetRuntime(t *testing.T) {
 	req, _ := http.NewRequest("GET", "", nil)
 	rec := httptest.NewRecorder()
-	c := new(counter)
-	h := Runtime(c)
+	var c counter
+	h := Runtime(&c)
 	h.ServeHTTP(rec, req)
 
 	run := rec.Header().Get(headerRuntime)
@@ -26,8 +26,8 @@ func TestDontOverwrite(t *testing.T) {
 	req, _ := http.NewRequest("GET", "", nil)
 	rec := httptest.NewRecorder()
 	rec.Header().Set(headerRuntime, "foo")
-	c := new(counter)
-	h := Runtime(c)
+	var c counter
+	h := Runtime(&c)
 	h.ServeHTTP(rec, req)
 
 	run := rec.Header().Get(headerRuntime)

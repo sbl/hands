@@ -37,8 +37,8 @@ func TestEnforceSSL(t *testing.T) {
 			Header: tt.header,
 		}
 
-		c := new(counter)
-		h := EnforceSSL(c)
+		var c counter
+		h := EnforceSSL(&c)
 		h.ServeHTTP(rec, req)
 
 		if got := rec.Code; tt.exp != got {

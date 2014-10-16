@@ -10,8 +10,8 @@ func TestRequestIDAssignRandomUUID(t *testing.T) {
 	req, _ := http.NewRequest("GET", "", nil)
 	rec := httptest.NewRecorder()
 
-	c := new(counter)
-	h := RequestID(c)
+	var c counter
+	h := RequestID(&c)
 	h.ServeHTTP(rec, req)
 
 	id := req.Header.Get(HeaderRequestID)
@@ -37,8 +37,8 @@ func TestRequestIDPassThruWhenPresent(t *testing.T) {
 	req.Header.Set(HeaderRequestID, id)
 	rec := httptest.NewRecorder()
 
-	c := new(counter)
-	h := RequestID(c)
+	var c counter
+	h := RequestID(&c)
 	h.ServeHTTP(rec, req)
 
 	if got := rec.Header().Get(HeaderRequestID); id != got {

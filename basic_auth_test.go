@@ -29,8 +29,8 @@ func TestAuth(t *testing.T) {
 		}
 		rec := httptest.NewRecorder()
 
-		c := new(counter)
-		h := BasicAuth(c, u, p, realm)
+		var c counter
+		h := BasicAuth(&c, u, p, realm)
 
 		h.ServeHTTP(rec, req)
 
