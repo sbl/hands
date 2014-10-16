@@ -9,5 +9,6 @@ helpful `net/http` conformant handlers.
 - `hands.RequestID(next http.Handler)` add a request ID
 - `hands.Runtime(next http.Handler)` measure runtime
 - `hands.EnforceSSL(next http.Handler)` redirect to SSL
+- `hands.Logger(next http.Handler)` l2met logger
 - `hands.BasicAuth(next http.Handler, user, password, realm string)`
   http basic auth
